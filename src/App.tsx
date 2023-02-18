@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
+import { ThemeSwitch } from './components/blocks/ThemeSwitch'
 
-
-const App: React.FC = () => {
-  
+const App = () => {
 
 
   return (
-    <></>
+    <>
+      <ThemeSwitch />
+    </>
   )
 }
 

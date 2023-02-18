@@ -3,7 +3,24 @@ import '../main.css'
 
 interface Theme {
   id: 'light' | 'dark';
-  
+  background: {
+    [key: string]: string;
+  };
+  colors: {
+    [key: string]: string;
+}
+  spacing: {
+    [key: string]: string;
+  };
+  typography: {
+    fontSize: {
+      [key: string]: string;
+    };
+    fontFamily: string;
+    fontWeight: {
+      [key: string]: number;
+    };
+  };
 }
 
 declare module 'styled-components' {
@@ -46,11 +63,11 @@ const darkTheme: DefaultTheme = {
   colors: {
     primary: 'hsl(235, 21%, 11%)',
     secondary: 'hsl(235, 24%, 19%)',
-    lightGrayishBlue: 'hsl(234, 39%, 85%)',
-    lightGrayishBlueHoover: 'hsl(236, 33%, 92%)',
-    darkGrayishBlue: 'hsl(234, 11%, 52%)',
-    veryDarkGrayishBlue: 'hsl(233, 14%, 35%)',
-    veryDarkGrayishBlueHoover: 'hsl(237, 14%, 26%)',
+    accentLight: 'hsl(234, 39%, 85%)',
+    accentDark: 'hsl(234, 11%, 52%)',
+    accentVeryDark: 'hsl(233, 14%, 35%)',
+    accentDarkHover: 'hsl(236, 33%, 92%)',
+    accentVeryDarkHover: 'hsl(237, 14%, 26%)',
   },
   spacing: {
     
