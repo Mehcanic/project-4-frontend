@@ -1,10 +1,20 @@
 import { DefaultTheme } from 'styled-components'
 import '../main.css'
 
-const lightTheme: DefaultTheme ={
+interface Theme {
+  id: 'light' | 'dark';
+  
+}
+
+declare module 'styled-components' {
+  export interface DefaultTheme extends Theme {}
+}
+
+const lightTheme: DefaultTheme = {
+  id: 'light',
   background: {
     primary: 'hsl(220, 98%, 61%)',
-    pradient: 'linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));',
+    gradient: 'linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));',
   },
   colors: {
     primary: 'hsl(0, 0%, 98%)',
@@ -18,7 +28,7 @@ const lightTheme: DefaultTheme ={
   },
   typography: {
     fontSize: {
-      standar: '18px',
+      standard: '18px',
     },
     fontFamily: "'Josefin Sans', sans-serif;'",
     fontWeight: {
@@ -28,9 +38,10 @@ const lightTheme: DefaultTheme ={
 }}
 
 const darkTheme: DefaultTheme = {
+  id: 'dark',
   background: {
-    bgPrimary: 'hsl(220, 98%, 61%)',
-    bgGradient: 'linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));',
+    primary: 'hsl(220, 98%, 61%)',
+    gradient: 'linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));',
   },
   colors: {
     primary: 'hsl(235, 21%, 11%)',
@@ -46,9 +57,9 @@ const darkTheme: DefaultTheme = {
   },
   typography: {
     fontSize: {
-      standar: '18px',
+      standard: '18px',
     },
-    fontFamily: "'Josefin Sans', sans-serif;'",
+    fontFamily: "'Josefin Sans', sans-serif;",
     fontWeight: {
       regular: 400,
       bold: 700,
