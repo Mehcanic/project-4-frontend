@@ -1,7 +1,9 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 
 
-function App() {
+const App: React.FC = () => {
+  
+
 
   return (
     <></>
