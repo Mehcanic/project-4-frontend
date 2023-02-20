@@ -3,7 +3,19 @@ import '../main.css'
 
 interface Theme {
   id: 'light' | 'dark';
-  
+  background: {
+    primary: string;
+    gradient: string;
+  }; 
+  colors: {
+    primary: string;
+    secondary: string;
+    accent1: string;
+    accent2: string;
+    accent3: string;
+    accent4 : string;
+    accent5: string;
+  };
 }
 
 declare module 'styled-components' {
