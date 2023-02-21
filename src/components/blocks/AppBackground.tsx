@@ -40,7 +40,7 @@ const SwitchIcon = styled.img`
 `
 
 
-const ThemeSwitch = () => {
+const AppBackground = () => {
   const [theme, setTheme] = useState(darkTheme)
   const [icon, setIcon] = useState(iconMoon)
 
@@ -69,4 +69,4 @@ const ThemeSwitch = () => {
   )
 }
 
-export { ThemeSwitch }
+export { AppBackground }
