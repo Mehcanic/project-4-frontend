@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
-import { ThemeSwitch } from './components/elements/ThemeSwitch'
-import Header from './components/elements/HeaderTitle'
+import { ThemeSwitch } from './components/blocks/ThemeSwitch'
+import AppBackground from './components/blocks/AppBackground'
 
 const App = () => {
 
 
   return (
-    <>
-      <Header />
+    <div className='application'>
       <ThemeSwitch />
-    </>
+    </div>
   )
 }
 

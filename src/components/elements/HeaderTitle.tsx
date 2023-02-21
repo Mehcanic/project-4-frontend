@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import { darkTheme } from '../../styles/theme'
 
-const HeaderTitle = styled.h1`
+const LogoText = styled.h1`
   color: #fff;
   font-size: ${darkTheme.typography.fontSize.header};
   font-weight: ${darkTheme.typography.fontWeight.bold};
@@ -9,19 +9,16 @@ const HeaderTitle = styled.h1`
   line-height: 40px;
   margin: 0;
   padding: 1rem;
-
 `
 
 
-const Header = () => {
-
-
+const HeaderTitle = () => {
 
   return (
     <div className="logo">
-      <HeaderTitle>TODO</HeaderTitle>
+      <LogoText>TODO</LogoText>
     </div>
   )
 }
 
-export default Header
+export default HeaderTitle

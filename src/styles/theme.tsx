@@ -1,6 +1,11 @@
 import { DefaultTheme } from 'styled-components'
 import '../main.css'
 
+import bgDesktopLight from '../assets/bg-desktop-light.jpg'
+import bgDesktopDark from '../assets/bg-desktop-dark.jpg'
+import bgMobileLight from '../assets/bg-mobile-light.jpg'
+import bgMobileDark from '../assets/bg-mobile-dark.jpg'
+
 interface Theme {
   id: 'light' | 'dark';
   background: {
@@ -30,15 +35,17 @@ declare module 'styled-components' {
 const lightTheme: DefaultTheme = {
   id: 'light',
   background: {
-    primary: 'hsl(220, 98%, 61%)',
+    primary: '#3a7bfd',
     gradient: 'linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));',
+    bgImageDesktop: bgDesktopLight,
+    bgImageMobile: bgMobileLight,
   },
   colors: {
-    primary: 'hsl(0, 0%, 98%)',
-    secondary: 'hsl(236, 33%, 92%)',
-    accentLight: 'hsl(233, 11%, 84%)',
-    accentDark: 'hsl(236, 9%, 61%)',
-    accentVeryDark: 'hsl(235, 19%, 35%)',
+    primary: '#fafafa',
+    secondary: '#e4e5f1',
+    accentLight: '#d2d3db',
+    accentDark: '#9394a5',
+    accentVeryDark: '#484b6a',
   },
   spacing: {
 
@@ -58,17 +65,19 @@ const lightTheme: DefaultTheme = {
 const darkTheme: DefaultTheme = {
   id: 'dark',
   background: {
-    primary: 'hsl(220, 98%, 61%)',
+    primary: '#3a7bfd',
     gradient: 'linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));',
+    bgImageDesktop: bgDesktopDark,
+    bgImageMobile: bgMobileDark,
   },
   colors: {
-    primary: 'hsl(235, 21%, 11%)',
-    secondary: 'hsl(235, 24%, 19%)',
-    accentLight: 'hsl(234, 39%, 85%)',
-    accentDark: 'hsl(234, 11%, 52%)',
-    accentVeryDark: 'hsl(233, 14%, 35%)',
-    accentDarkHover: 'hsl(236, 33%, 92%)',
-    accentVeryDarkHover: 'hsl(237, 14%, 26%)',
+    primary: '#161722',
+    secondary: '#25273c',
+    accentLight: '#cacde8',
+    accentDark: '#777a92',
+    accentVeryDark: '#4d5066',
+    accentDarkHover: '#e4e5f1',
+    accentVeryDarkHover: '#393a4c',
   },
   spacing: {
     
