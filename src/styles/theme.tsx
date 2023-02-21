@@ -46,6 +46,7 @@ const lightTheme: DefaultTheme = {
   typography: {
     fontSize: {
       standard: '18px',
+      header: '100px',
     },
     fontFamily: "'Josefin Sans', sans-serif;'",
     fontWeight: {
@@ -75,6 +76,7 @@ const darkTheme: DefaultTheme = {
   typography: {
     fontSize: {
       standard: '18px',
+      header: '40px',
     },
     fontFamily: "'Josefin Sans', sans-serif;",
     fontWeight: {

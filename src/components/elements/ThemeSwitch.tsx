@@ -27,9 +27,9 @@ const ThemeSwitch = () => {
     }
 
   return (
-  <>
+  <div className='themeSwitch'>
     <img src={icon} alt="" onClick={handleClick}/>
-  </>
+  </div>
   )
 }
 
