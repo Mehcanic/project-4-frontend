@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import styled, { DefaultTheme, ThemeProvider } from "styled-components"
 import { lightTheme, darkTheme } from '../../styles/theme'
+import FilterTasks from '../elements/FilterTasks'
 
 type ListProps = {
   theme: DefaultTheme;
@@ -25,7 +26,7 @@ const List = styled.div`
   width: 540px;
   height: auto;
   margin: 0 auto;
-  border-radius: 5px;
+  border-radius: 5px 5px 0 0;
 
 ` 
 const ListItem = styled.div`
@@ -66,6 +67,18 @@ const ListItem = styled.div`
 }
 `
 
+const BottomMenu = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 40px;
+  width: 540px;
+  margin: 0 auto;
+  border-radius: 0 0 5px 5px;
+  
+`
+
 const ListOfTasks = ({ theme }: ListProps) => {
 // localhost:5000/api/users/tasks
 
@@ -78,6 +91,7 @@ const ListOfTasks = ({ theme }: ListProps) => {
       const data = await response.json()
       console.log(data)
       setTasks(data)
+      setError(null)
     } catch (error: any) {
       setError(error)
     }
@@ -100,22 +114,30 @@ const ListOfTasks = ({ theme }: ListProps) => {
       <ThemeProvider theme={theme}>
         <List>
           {tasks.sort((a, b) => a.id - b.id).map(item => {
-            return (
-              <ListItem key={item.id}>
-                <div className='item-container'>
-                  <div className='cicrle'></div>
-                </div>
-                <div className='item-container'>
-                  <p>{item.name}</p>
-                </div>
-                <div className='item-container'>
-                  <div className='remove'></div>
-                </div>
-              </ListItem>
-            )
-          })
+              return (
+                <>
+                  <ListItem key={item.id}>
+                    <div className='item-container'>
+                      <div className='cicrle'></div>
+                    </div>
+                    <div className='item-container'>
+                      <p>{item.name}</p>
+                    </div>
+                    <div className='item-container'>
+                      <div className='remove'></div>
+                    </div>
+                  </ListItem>
+                </>
+              )
+            })
           }
         </List>
+                  <BottomMenu>
+                    <div className='item-container'>
+                      <p>{tasks.length} items left</p>
+                      <FilterTasks />
+                    </div>
+                  </BottomMenu>
       </ThemeProvider>
     </>
   )
