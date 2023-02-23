@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 
-import { ThemeProvider } from 'styled-components'
+import { StyleSheetManager, ThemeProvider, DefaultTheme } from 'styled-components'
 import { darkTheme, lightTheme } from './styles/theme'
 
 import AppBackground from './components/blocks/AppBackground'
 import ListOfTasks from './components/blocks/ListOfTasks'
 import ThemeIcon from './components/elements/ThemeIcon'
 import HeaderTitle from './components/elements/HeaderTitle'
-
 import iconMoon from './assets/icon-moon.svg'
 import iconSun from './assets/icon-sun.svg'
 
@@ -27,14 +26,16 @@ const App = () => {
     }
 
   return (
-    <div className='application'>
-      <ThemeProvider theme={theme}>
-        <AppBackground />
-        <HeaderTitle />
-        <ThemeIcon icon={icon}  onClick={handleClick} />
-        <ListOfTasks theme={theme} />
-      </ThemeProvider>
-    </div>
+    <StyleSheetManager disableVendorPrefixes>
+      <div className='application'>
+        <ThemeProvider theme={theme}>
+          <AppBackground />
+          <HeaderTitle />
+          <ThemeIcon icon={icon}  onClick={handleClick} />
+          <ListOfTasks theme={theme}  />
+        </ThemeProvider>
+      </div>
+    </StyleSheetManager>
   )
 }
 

@@ -35,23 +35,27 @@ declare module 'styled-components' {
 const lightTheme: DefaultTheme = {
   id: 'light',
   background: {
-    primary: '#3a7bfd',
+    primary: 'hsl(220, 98%, 61%)',
     gradient: 'linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));',
     bgImageDesktop: bgDesktopLight,
     bgImageMobile: bgMobileLight,
   },
   colors: {
-    primary: '#fafafa',
-    secondary: '#e4e5f1',
-    accentLight: '#d2d3db',
-    accentDark: '#9394a5',
-    accentVeryDark: '#484b6a',
+    primary: 'hsl(0, 0%, 98%)',
+    secondary: 'hsl(236, 33%, 92%)',
+    // accentLight: 'hsl(233, 11%, 84%)',
+    fontColor: 'hsl(235, 19%, 35%)',
+    accentDark: 'hsl(236, 9%, 61%)',
+    accentVeryDark: 'hsl(235, 19%, 35%)',
+    accentDarkHover: 'hsl(233, 14%, 35%)',
+    accentVeryDarkHover: 'hsl(237, 14%, 26%)',
   },
   spacing: {
 
   },
   typography: {
     fontSize: {
+      small: '14px',
       standard: '18px',
       header: '100px',
     },
@@ -65,25 +69,26 @@ const lightTheme: DefaultTheme = {
 const darkTheme: DefaultTheme = {
   id: 'dark',
   background: {
-    primary: '#3a7bfd',
+    primary: 'hsl(220, 98%, 61%)',
     gradient: 'linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));',
     bgImageDesktop: bgDesktopDark,
     bgImageMobile: bgMobileDark,
   },
   colors: {
-    primary: '#161722',
-    secondary: '#25273c',
-    accentLight: '#cacde8',
-    accentDark: '#777a92',
-    accentVeryDark: '#4d5066',
-    accentDarkHover: '#e4e5f1',
-    accentVeryDarkHover: '#393a4c',
+    primary: 'hsl(235, 21%, 11%)',
+    secondary: 'hsl(235, 24%, 19%)',
+    fontColor: 'hsl(234, 39%, 85%)',
+    accentDark: 'hsl(236, 33%, 92%)',
+    accentVeryDark: 'hsl(234, 11%, 52%)',
+    accentDarkHover: 'hsl(233, 14%, 35%)',
+    accentVeryDarkHover: 'hsl(237, 14%, 26%)',
   },
   spacing: {
     
   },
   typography: {
     fontSize: {
+      small: '14px',
       standard: '18px',
       header: '40px',
     },

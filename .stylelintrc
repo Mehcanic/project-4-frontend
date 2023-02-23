@@ -1,0 +1,17 @@
+{
+  "processors": ["stylelint-processor-styled-components"],
+  "extends": [
+    "stylelint-config-standard"
+  ],
+  "plugins": [
+    "stylelint-order"
+  ],
+  "rules": {
+
+  },
+  "configBasedir": "./node_modules",
+    "ignoreFiles": [
+    "node_modules/**"
+  ],
+  "customSyntax": "styled-components"
+}

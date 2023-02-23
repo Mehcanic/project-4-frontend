@@ -1,43 +1,49 @@
 import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+
 
 type FilterTaskProps = {
   action: string
 }
 
-const FilterTasks = (props: String) => {
+
+export const FilterButton = styled.a`
+  
+`
+
+const FilterTasks = (props: FilterTaskProps) => {
 // localhost:5000/api/users/search_tasks?description=task
-  const [action, setAction] = useState('')
   const [text, setText] = useState<string | null>(null)
   const [error, setError] = useState<string | null>(null)
+
 
   // create function that will use api endpoint on click
   // to filter tasks by all, active, completed
 
-  const filter = async (status: string) => {
+  const filter = async (status: String) => {
     try {
-      const response = await fetch(`http://127.0.0.1:5000/api/users/search_tasks?status=${status}`)
+      const response = await fetch(`/api/users/search_tasks?status=${status}`)
       const data = await response.json()
-      setAction(data)
+      setText(data)
       setError(null)
     } catch (error: any) {
       setError(error.message)
     }
   }
 
-  const handleClick = () => {
-    if (action === 'all') {
-      console.log(action)
+  const handleClick = () => { 
+    if (props.action === 'all') {
       setText('All')
-    } else if (action === 'active') {
-      console.log(action)
+    } else if (props.action === 'active') {
       setText('Active')
-    } else if (action === 'completed') {
-      console.log(action)
+    } else if (props.action === 'completed') {
       setText('Completed')
     }
-
   }
 
+  useEffect(() => {
+    filter(props.action)
+  }, [])
 
   if (error) {
     return <div>Error: {error}</div>
@@ -46,7 +52,7 @@ const FilterTasks = (props: String) => {
 
   return (
     <>
-      <button onClick={handleClick}>{text}</button>
+      <FilterButton onClick={handleClick} key={props.action}>{props.action}</FilterButton>
     </>
   )
 }
