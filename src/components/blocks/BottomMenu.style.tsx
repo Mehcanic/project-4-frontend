@@ -24,7 +24,6 @@ export const Menu = styled.div`
     align-items: center;
     width: 100%;
     height: 100%;
-    
   }
 
   #items-left-container {
@@ -35,13 +34,28 @@ export const Menu = styled.div`
     justify-content: space-evenly;
     align-items: center;
     width: 50%;
-    
+    font-weight: ${props => props.theme.typography.fontWeight.bold};
+
+    a {
+      &:hover {
+        cursor: pointer;
+        color: ${props => props.theme.colors.accentDark};
+      }
+    }
+
   }
 
   #clear-container {
     justify-content: flex-end;
     text-align: right;
     width: 25%;
+
+    p {
+      &:hover {
+        cursor: pointer;
+        color: ${props => props.theme.colors.accentDark};
+      }
+    }
   } 
 
 `

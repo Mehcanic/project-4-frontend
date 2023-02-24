@@ -6,6 +6,8 @@ import { Task, ThemeProps } from '../../types'
 import { lightTheme, darkTheme } from '../../styles/theme'
 import { List, ListItem } from './ListOfTasks.style'
 
+import iconCross from '../../assets/icon-cross.svg'
+
 import BottomMenu from './BottomMenu'
 
 
@@ -48,7 +50,7 @@ const ListOfTasks = ({ theme }: ThemeProps) => {
                 <>
                   <ListItem key={item.id}>
                     <div className='circle-container'>
-                      <div className='cicrle'></div>
+                      <div className='circle'></div>
                     </div>
                     <div className='text-container'>
                       <p>{item.name}</p>

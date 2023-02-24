@@ -17,12 +17,12 @@ const BottomMenu = ({ theme, tasks }: ThemeProps) => {
           <div className="item-container" id="items-left-container">
             <p>{tasks.length} items left</p>
           </div>
-          <div className="item-container" id="filters-container">
+          <div className="item-container hoover" id="filters-container">
             <FilterTasks action="All" />
             <FilterTasks action="Active" /> 
             <FilterTasks action="Completed" /> 
           </div>
-          <div className="item-container" id="clear-container">
+          <div className="item-container hoover" id="clear-container">
             <p>Clear completed</p>
           </div>
       </Menu>
