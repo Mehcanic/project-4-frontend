@@ -23,7 +23,7 @@ export const ListItem = styled.div<ListItemProps>`
   display: flex;  
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   width: 492px;
   height: 100%;
   min-height: 40px;
@@ -31,16 +31,6 @@ export const ListItem = styled.div<ListItemProps>`
   padding: 6px 0;
   border-bottom: 1px solid ${props => props.theme.colors.primary};
 
-
-  /* TODO fix below code to properley style circle and cross in list item */
-  ${({height}) => height > 75 && `
-    .circle-container {
-      margin-top: 0;
-        .circle {
-        margin-top: 50px;
-      }
-    } 
-  `}
 
   &:hover {
     border-bottom: 1px solid ${props => props.theme.colors.accentDarkHover};
@@ -52,13 +42,13 @@ export const ListItem = styled.div<ListItemProps>`
     }
 
     .remove {
-          background-image: url(${iconCross});
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: 18px;
-          color: ${props => props.theme.colors.accentDark};
-          cursor: pointer;
-        }
+      background-image: url(${iconCross});
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 18px;
+      color: ${props => props.theme.colors.accentDark};
+      cursor: pointer;
+    }
   }
   
   .circle-container {
@@ -66,16 +56,14 @@ export const ListItem = styled.div<ListItemProps>`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: flex-start;
-    /* height: 80%; */
-    /* width: 100%; */
-    
+    align-items: center;
+
     .circle {
       border-radius: 50%;
       width: 24px;
       height: 24px;
       border: 5px solid ${props => props.theme.background.gradient}; 
-
+      
       &:hover {
         border-width: 2px;
         cursor: pointer;

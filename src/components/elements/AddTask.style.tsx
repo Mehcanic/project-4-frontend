@@ -22,16 +22,46 @@ export const InputContainer = styled.div`
   height: 100%;
   padding: 1rem;
 
-  
+    &:hover {
+      border: 1px solid ${props => props.theme.colors.accentDarkHover};
+      
+      .circle {
+        border: .25px solid ${props => props.theme.colors.fontColor};
+      }
+    }
+
+    .circle {
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    border: 5px solid ${props => props.theme.background.gradient}; 
+    
+    &:hover {
+      border-width: 2px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        border-radius: 50%;
+        background: ${props => props.theme.background.secondary};
+        z-index: 1;
+      }
+    }
+  }
 `;
 
 export const TaskInput = styled.input`
-  font-size: 18px;
+  position: relative;
+  z-index: 2;
   background-color: ${props => props.theme.colors.secondary};
   color: ${props => props.theme.colors.fontColor};
   font-weight: ${props => props.theme.typography.fontWeight.regular};
+  font-size: 18px;
   border: none;
   width: 90%;
   outline: none;
-
 `

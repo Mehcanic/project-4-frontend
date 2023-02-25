@@ -1,18 +1,20 @@
 import { InputContainer, TaskInput } from "./AddTask.style";
-import { ThemeProps } from "../../types";
-import { DefaultTheme } from "styled-components";
-import { CheckElement } from "./IconElement";
+import { Task, ThemeProps } from '../../types'
+import styled, { DefaultTheme, ThemeProvider } from "styled-components"
+import { lightTheme, darkTheme } from '../../styles/theme'
+
 
 const AddTask = ({ theme }: ThemeProps) => {
 
-
-
-
   return (
-    <InputContainer>
-      <CheckElement />
-      <TaskInput placeholder="Create a new todo..." />
-    </InputContainer>
+    <ThemeProvider theme={theme}>
+      <InputContainer>
+        <div className='circle-container'>
+            <div className='circle'></div>
+        </div>
+        <TaskInput placeholder="Create a new todo..." />
+      </InputContainer>
+    </ThemeProvider>
   )
 }
 
