@@ -14,5 +14,5 @@ body {
   color: #333;
   margin: 0 auto;
   max-width: 1440px;
-  height: 100vh;
+  min-height: 900px;
 }

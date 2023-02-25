@@ -48,9 +48,11 @@ const ListOfTasks = ({ theme }: ThemeProps) => {
           {tasks.sort((a, b) => a.id - b.id).map(item => {
               return (
                 <>
-                  <ListItem key={item.id}>
+                  <ListItem height={75} key={item.id}>
                     <div className='circle-container'>
-                      <div className='circle'></div>
+                      <div>
+                        <div className='circle'></div>
+                      </div>
                     </div>
                     <div className='text-container'>
                       <p>{item.name}</p>

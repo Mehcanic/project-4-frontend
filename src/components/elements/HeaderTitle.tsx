@@ -8,7 +8,6 @@ const LogoText = styled.h1`
   letter-spacing: 15px;
   line-height: 40px;
   margin: 0;
-  padding: 1rem;
 `
 
 

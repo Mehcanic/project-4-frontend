@@ -1,7 +1,13 @@
 import styled from 'styled-components'
+import { HTMLAttributes } from 'react'
+import { DefaultTheme, ThemedStyledProps } from 'styled-components'
 
 import iconCross from '../../assets/icon-cross.svg'
 import iconCheck from '../../assets/icon-check.svg'
+
+type ListItemProps = HTMLAttributes<HTMLDivElement> & ThemedStyledProps<{
+  height: number;
+}, DefaultTheme>;
 
 export const List = styled.div`
   background-color: ${props => props.theme.colors.secondary};
@@ -10,19 +16,31 @@ export const List = styled.div`
   width: 540px;
   height: auto;
   margin: 0 auto;
-  margin-top: 2px;
+  padding-top: 5px;
   border-radius: 5px 5px 0 0;
 ` 
-export const ListItem = styled.div`
+export const ListItem = styled.div<ListItemProps>`
   display: flex;  
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   width: 492px;
+  height: 100%;
   min-height: 40px;
   margin: 0 auto; 
   padding: 6px 0;
   border-bottom: 1px solid ${props => props.theme.colors.primary};
+
+
+  /* TODO fix below code to properley style circle and cross in list item */
+  ${({height}) => height > 75 && `
+    .circle-container {
+      margin-top: 0;
+        .circle {
+        margin-top: 50px;
+      }
+    } 
+  `}
 
   &:hover {
     border-bottom: 1px solid ${props => props.theme.colors.accentDarkHover};
@@ -41,18 +59,18 @@ export const ListItem = styled.div`
           color: ${props => props.theme.colors.accentDark};
           cursor: pointer;
         }
-    
-  }
-  
-  .list-container {
-    width: 100%;
   }
   
   .circle-container {
     position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    /* height: 80%; */
+    /* width: 100%; */
     
     .circle {
-      position: relative;
       border-radius: 50%;
       width: 24px;
       height: 24px;
@@ -103,6 +121,6 @@ export const ListItem = styled.div`
       }
     }
 
-    
+
 `
 
