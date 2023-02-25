@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react'
 import styled, { DefaultTheme, ThemeProvider } from "styled-components"
 
 import { Task, ThemeProps } from '../../types'
-
 import { lightTheme, darkTheme } from '../../styles/theme'
 import { List, ListItem } from './ListOfTasks.style'
 
 import iconCross from '../../assets/icon-cross.svg'
 import BottomMenu from './BottomMenu'
+import removeTask from '../functionalComponents/handleRemoveTask'
 
 
 const ListOfTasks = ({ theme }: ThemeProps) => {
@@ -35,10 +35,13 @@ const ListOfTasks = ({ theme }: ThemeProps) => {
     return <div>Error: {error}</div>
   }
 
-
   useEffect(() => {
     fetchTasks()
   }, [])
+
+  const handleRemoveClick = async (taskId: number) => {
+    removeTask(taskId, tasks, setTasks, setError);
+  }
 
   return (
     <>
@@ -55,7 +58,9 @@ const ListOfTasks = ({ theme }: ThemeProps) => {
                       <p>{item.name}</p>
                     </div>
                     <div className='remove-container'>
-                      <div className='remove'></div>
+                      <div className='remove' onClick={() => {
+                        handleRemoveClick(item.id)
+                      }}></div>
                     </div>
                   </ListItem>
                 </>
