@@ -5,10 +5,9 @@ import { Task, ThemeProps } from '../../types'
 import { lightTheme, darkTheme } from '../../styles/theme'
 import { List, ListItem } from './ListOfTasks.style'
 
-import iconCross from '../../assets/icon-cross.svg'
 import BottomMenu from './BottomMenu'
 import removeTask from '../functionalComponents/handleRemoveTask'
-
+import AddTask from '../elements/AddTask'
 
 const ListOfTasks = ({ theme }: ThemeProps) => {
 // localhost:5000/api/users/tasks
@@ -35,6 +34,10 @@ const ListOfTasks = ({ theme }: ThemeProps) => {
     return <div>Error: {error}</div>
   }
 
+  const handleTaskAdded = () => {
+    setTasks([...tasks, task])
+  }
+
   useEffect(() => {
     fetchTasks()
   }, [])
@@ -46,6 +49,7 @@ const ListOfTasks = ({ theme }: ThemeProps) => {
   return (
     <>
       <ThemeProvider theme={theme}>
+        <AddTask theme={theme} onTaskAdded={handleTaskAdded} />
         <List>
           {tasks.sort((a, b) => a.id - b.id).map(item => {
               return (

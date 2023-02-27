@@ -3,6 +3,7 @@ import { DefaultTheme } from 'styled-components';
 export type ThemeProps = {
   theme: DefaultTheme;
   tasks: Array<Task>;
+  onTaskAdded?: () => void;
 }
 
 export type Task = {
