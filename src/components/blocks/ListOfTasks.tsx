@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled, { DefaultTheme, ThemeProvider } from "styled-components"
+import { baseUrl } from '../../config'
 
 import { Task, ThemeProps } from '../../types'
 import { lightTheme, darkTheme } from '../../styles/theme'
@@ -17,7 +18,7 @@ const ListOfTasks = ({ theme }: ThemeProps) => {
 
   const fetchTasks = async () => {
     try {
-      const response = await fetch('/api/users/tasks')
+      const response = await fetch(`${baseUrl}/users/tasks`)
       const data = await response.json()
       setTasks(data)
       setError(null)
@@ -34,9 +35,9 @@ const ListOfTasks = ({ theme }: ThemeProps) => {
     return <div>Error: {error}</div>
   }
 
-  const handleTaskAdded = () => {
-    setTasks([...tasks, task])
-  }
+  // const handleTaskAdded = () => {
+  //   setTasks([...tasks, task])
+  // }
 
   useEffect(() => {
     fetchTasks()
@@ -49,7 +50,7 @@ const ListOfTasks = ({ theme }: ThemeProps) => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <AddTask theme={theme} onTaskAdded={handleTaskAdded} />
+        {/* <AddTask theme={theme} onTaskAdded={handleTaskAdded} /> */}
         <List>
           {tasks.sort((a, b) => a.id - b.id).map(item => {
               return (

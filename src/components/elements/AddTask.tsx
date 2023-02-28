@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { baseUrl } from "../../config";
+
 import { InputContainer, TaskInput } from "./AddTask.style";
 import { Task, ThemeProps } from '../../types'
 import styled, { DefaultTheme, ThemeProvider } from "styled-components"
@@ -23,9 +25,9 @@ const AddTask = ({ theme }: ThemeProps) => {
     }
 
     try {
-      const response = await axios.post('/api/users/tasks', form)
+      const response = await axios.post(`${baseUrl}/users/tasks`, form)
       setForm({name: ''})
-      onTaskAdded()
+      // onTaskAdded()
     } catch (error: any) {
       console.log(error.response.data)
       setErrorData(error.response.data.errors)

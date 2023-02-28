@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import { baseUrl } from '../../config'
+
 import styled from 'styled-components'
 
 
@@ -23,7 +25,7 @@ const FilterTasks = (props: FilterTaskProps) => {
 
   const filter = async (status: String) => {
     try {
-      const response = await fetch(`/api/users/search_tasks?status=${status}`)
+      const response = await fetch(`${baseUrl}/users/search_tasks?status=${status}`)
       const data = await response.json()
       setText(data)
       setError(null)
