@@ -12,7 +12,7 @@ import AddTask from './components/elements/AddTask'
 
 import iconMoon from './assets/icon-moon.svg'
 import iconSun from './assets/icon-sun.svg'
-import { ThemeProps, Task } from './types'
+import { ThemeProps, Task} from './types'
 
 const App = () => {
   const [theme, setTheme] = useState(darkTheme)
@@ -28,7 +28,6 @@ const App = () => {
         setIcon(iconMoon)
       }
     }
-
   return (
     <StyleSheetManager disableVendorPrefixes>
       <div className='application'>

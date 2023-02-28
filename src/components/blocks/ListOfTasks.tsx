@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styled, { DefaultTheme, ThemeProvider } from "styled-components"
 import { baseUrl } from '../../config'
 
@@ -15,6 +15,18 @@ const ListOfTasks = ({ theme }: ThemeProps) => {
 
   const [tasks, setTasks] = useState<Task[]>([])
   const [error, setError] = useState<string | null>(null)
+  const inputRef = useRef<HTMLInputElement>(null);
+
+
+  // const refreshContainer = () => {
+  //   const inputContainer = document.getElementById('list-container');
+  //   if (inputContainer) {
+  //     setTimeout(() => {
+  //       inputRef.current?.focus();
+  //     }, 500);
+  //   }
+  // }
+
 
   const fetchTasks = async () => {
     try {
@@ -35,10 +47,6 @@ const ListOfTasks = ({ theme }: ThemeProps) => {
     return <div>Error: {error}</div>
   }
 
-  // const handleTaskAdded = () => {
-  //   setTasks([...tasks, task])
-  // }
-
   useEffect(() => {
     fetchTasks()
   }, [])
@@ -49,9 +57,8 @@ const ListOfTasks = ({ theme }: ThemeProps) => {
 
   return (
     <>
-      <ThemeProvider theme={theme}>
-        {/* <AddTask theme={theme} onTaskAdded={handleTaskAdded} /> */}
-        <List>
+      <ThemeProvider theme={theme}>        
+        <List id="list-container">
           {tasks.sort((a, b) => a.id - b.id).map(item => {
               return (
                 <>
