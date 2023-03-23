@@ -8,8 +8,6 @@ import { Menu } from "./BottomMenu.style"
 import FilterTasks from "../elements/FilterTasks"
 
 
-
-
 const BottomMenu = ({ theme, tasks }: ThemeProps) => {
 
   return (

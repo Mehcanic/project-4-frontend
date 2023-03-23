@@ -68,6 +68,13 @@ export const ListItem = styled.div<ListItemProps>`
         border-width: 2px;
         cursor: pointer;
 
+        &:active {
+          background-image: url(${iconCheck});
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 16px;
+        }
+
         &::before {
           content: '';
           position: absolute;

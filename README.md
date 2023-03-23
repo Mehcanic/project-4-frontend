@@ -5,44 +5,56 @@ This was a solo project created as a part of the General Assembly Software Engin
 
 Task was to create full stack application using  React, Python, Flask and PostrgreSQL.
 
-The application had to be a CRUD application with multiple models. It had to be deployed online and to have automated tests for at least one RESTful resource on the back-end. I was responsible for the backend and login with signup on the front-end part of application. Also I was responsible for deployment and GitHub repositories. We used Jira to plan and manage our project.
+The goal of the project was to create a full stack application using Python, Flask, PostgreSQL and React. The application had to be a complete product which most likely means few relationships and CRUD functionality for at least a couple of models. I decide to make it simple on the back-end and focus of the fron-end part of the project.
+
+I decided to create simple todo list application. The application allows the user to create, read, update and delete tasks. The user can also mark the task as completed. The user can also filter the tasks by all, active and completed tasks or clear out all the completed tasks.
 
 ## Getting started and deployment
 
 - This project is split into two repositories. One for the backend:  
   <https://github.com/Mehcanic/project-3-backend>  
   and one for the frontend:  
-  <https://github.com/Mehcanic/project-3-frontend>
+  <https://github.com/Mehcanic/project-4-frontend>
 
-- The frontend is available to view [here](<https://project-kleur.netlify.app/>)
+- The frontend is available to view [here](https://tosdos-apps.netlify.app/>)
 - If you would like to take a look at the code please clone it and run:
+
+- On the front-end:
 
 ```console
 npm install
-```
 
-- Make sure you have MongoDB installed on your computer.
-- If you have it please run:
-
-```console
-mongod --dbpath ~/data/db
-```
-
-- Than run:
-
-```console
 npm run dev
+```
+
+- On the back-end:
+
+```console  
+pipenv shell
+
+pipenv install
+
+pipenv install --dev
+
+pipenv run flask run
 ```
 
 ## Timeframe
 
 - The time frame for the project was 2 weeks.
 
-## Technologies used for the backend
+## Technologies used for this project
+
+### Frontend
 
 - React
 - TypeScript
+- React Router
+- Axios
 - Styled Components
+
+### Backend
+
 - Python
 - Flask
 - PostgreSQL
@@ -50,11 +62,13 @@ npm run dev
 - Marshmallow
 - Bcrypt
 - JWT
+
+### Deployment
+
 - Insomnia
 - bit.io
 - fly.io
 - Netlify
-
 
 ## Brief
 
@@ -70,37 +84,35 @@ npm run dev
 
 ## Planning and Development procces
 
-1. Our first step was to decide about features for the application. We used Excalidraw for initial wireframe of the project:
-![Excalidraw](./Excalidraw.png)
+1. My first step when planning this project was to decide which productivity tools use for this project. I decided to use Notion and Quick Database Diagrams:
+    - Notion: <https://www.notion.so/Project-4-2c9e5f6161a45629acd481bb35f3318>
+    
 
-2. Next step was to create GitHub repositories for the project and to create a Jira board to plan and manage the prject and task for it:
-![Jira](./Jira-board.png)
+2. The first step was to determine the scope of the application. Given that I will be working on this project alone, I have decided to keep it simple. The application will enable users to create, read, update and delete tasks. Additionally, users can mark tasks as completed and filter them by all, active and completed tasks or clear out all completed tasks. For now, I have decided not to include login or signup until the MVP is done as I wanted to focus on the front-end (React) part of the application. Python with Flask was something completely new for me and two weeks was not enough time to learn back-end in a new technology and make a nice front-end.
 
-3. Rafael took his time to create wireframe in Figma. He was also responsible for the custom 3d cube done with three.js:
-![Figma](./Figma-board.png)
+3. I used a design from frontendmentor.io as a basis for the application. The app has a working theme switcher, with the dark theme set as default as it is easier on the eyes:
+    ![Design](./readme-assets/app-dark.png)
+    ![Design](./readme-assets/app-light.png)
 
-    Rob was responsible for the front-end part of the project. He used Material UI to create the design of the application. He also created the login and signup forms. He also created the router for the application.
+    Using an existing design helped me focus on the structure of the application and ensure that all included features were working properly. However, one confusing aspect was that the design file did not provide proper descriptions for which colors should be used where. I had access to a Figma file with the design (which I cannot include due to licensing issues) and had to figure out which color should be used where.
 
-    I was responsible for the backend part of the project. I created the models for the application and the controllers. I also created the routes for the application. I also created the seed file for the application. I also created the login and signup functionality for the application. I also created the deployment for the application.
+4. I started building application by creating model for the back-end. I decided to create three models for the application: User, Product and Basket. I used Quick Database Diagrams to create the database diagram for the application:
+    ![Quick Database Diagrams](./readme-assets/db-diagram.png)
 
-    We all worked together to create models for the users:
+    Here is example how the model for the user looks like:
 
-      ```javascript
+    ```python
+      class UserModel(db.Model, BaseModel):
+      __tablename__ = "users"
+      username = db.Column(db.String, unique=True, nullable=True)
+      email = db.Column(db.Text, unique=True, nullable=True)
+      password = db.Column(db.String, nullable=True)
 
-      ```
+      task = db.relationship("TaskModel", back_populates="user")
+      lists_of_tasks = db.relationship("ListOfTasksModel", back_populates="user")
 
-    and for the products:
-
-    ```javascript
-
-    ```
-
-    We decided that we will keep the basket inside the user model. It was easier to manage the basket this way. We also decided to keep the bought products inside the user model.
-
-4. Next I created the app in index.ts and made sure it is connecting to the database:
-
-    ```javascript
-
+      def __repr__(self):
+          return f"<User {self.username}>"
     ```
 
 5. Next steo was to create fist simple user and product controllers to make sure the app is working:
@@ -148,3 +160,7 @@ Writing simple but functioning CRUD application was a big win for me. I am happy
 
 - I’m currently working on fixing the removeFromBasket() controller as it’s not functioning as intended. I’ve identified a few issues that I’m addressing and I’ll keep you updated on my progress.
 - I’m planning to create a separate basket model as having it inside the user model is not an optimal solution. I’d like to have a basket inside a basket model instead. This will help us keep our code organized and make it easier to maintain in the long run.
+
+## Key Learnings
+
+

@@ -39,6 +39,13 @@ export const InputContainer = styled.div`
     &:hover {
       border-width: 2px;
 
+      &:active {
+          background-image: url(${iconCheck});
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 16px;
+        }
+
       &::before {
         content: '';
         position: absolute;

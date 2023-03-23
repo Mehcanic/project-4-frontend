@@ -34,9 +34,8 @@ const AddTask = ({ theme }: ThemeProps) => {
     e.preventDefault()
     let isValid = true
     if (Object.values(setForm).some((val) => !val)) {
-      isValid = true
+      isValid = false
     }
-
 
     if(!isValid) {
       alert('Task name could not be empty')
@@ -73,7 +72,7 @@ const AddTask = ({ theme }: ThemeProps) => {
         <div className='circle-container'>
           <div className='circle'></div>
         </div>
-        <TaskInput key={inputKey} placeholder="Create a new todo..." onChange={handleChange} onSubmit={handleSubmit} onKeyDown={handleKeyDown} ref={inputRef} value={form.name} />
+        <TaskInput key={inputKey} placeholder="Create a new todo..." onChange={handleChange} onSubmit={handleSubmit} onKeyDown={handleKeyDown} ref={inputRef} />
       </InputContainer>
     </ThemeProvider>
   )
