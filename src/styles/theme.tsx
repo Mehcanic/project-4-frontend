@@ -1,10 +1,10 @@
 import { DefaultTheme } from 'styled-components'
 import '../main.css'
 
-import bgDesktopLight from '../assets/bg-desktop-light.jpg'
-import bgDesktopDark from '../assets/bg-desktop-dark.jpg'
-import bgMobileLight from '../assets/bg-mobile-light.jpg'
-import bgMobileDark from '../assets/bg-mobile-dark.jpg'
+import bgDesktopLight from '../assets/bg-desktop-light.jpg';
+import bgDesktopDark from '../assets/bg-desktop-dark.jpg';
+import bgMobileLight from '../assets/bg-mobile-light.jpg';
+import bgMobileDark from '../assets/bg-mobile-dark.jpg';
 
 interface Theme {
   id: 'light' | 'dark';

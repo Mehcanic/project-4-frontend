@@ -1,99 +1,150 @@
-# Frontend Mentor - Todo app
 
-![Design preview for the Todo app coding challenge](./design/desktop-preview.jpg)
+# GA SEI PROJECT 4 - A Flask + React App
 
-## Welcome! 👋
+This was a solo project created as a part of the General Assembly Software Engineering Immersive course.
 
-Thanks for checking out this front-end coding challenge.
+Task was to create full stack application using  React, Python, Flask and PostrgreSQL.
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+The application had to be a CRUD application with multiple models. It had to be deployed online and to have automated tests for at least one RESTful resource on the back-end. I was responsible for the backend and login with signup on the front-end part of application. Also I was responsible for deployment and GitHub repositories. We used Jira to plan and manage our project.
 
-**To do this challenge, you need a good understanding of HTML, CSS and JavaScript.**
+## Getting started and deployment
 
-## The challenge
+- This project is split into two repositories. One for the backend:  
+  <https://github.com/Mehcanic/project-3-backend>  
+  and one for the frontend:  
+  <https://github.com/Mehcanic/project-3-frontend>
 
-Your challenge is to build out this todo app and get it looking as close to the design as possible.
+- The frontend is available to view [here](<https://project-kleur.netlify.app/>)
+- If you would like to take a look at the code please clone it and run:
 
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
+```console
+npm install
+```
 
-Your users should be able to:
+- Make sure you have MongoDB installed on your computer.
+- If you have it please run:
 
-- View the optimal layout for the app depending on their device's screen size
-- See hover states for all interactive elements on the page
-- Add new todos to the list
-- Mark todos as complete
-- Delete todos from the list
-- Filter by all/active/complete todos
-- Clear all completed todos
-- Toggle light and dark mode
-- **Bonus**: Drag and drop to reorder items on the list
+```console
+mongod --dbpath ~/data/db
+```
 
-Want some support on the challenge? [Join our Slack community](https://www.frontendmentor.io/slack) and ask questions in the **#help** channel.
+- Than run:
 
-## Where to find everything
+```console
+npm run dev
+```
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design. 
+## Timeframe
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`. 
+- The time frame for the project was 2 weeks.
 
-If you would like the design files (we provide Sketch & Figma versions) to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+## Technologies used for the backend
 
-You will find all the required assets in the `/images` folder. The assets are already optimized.
+- React
+- TypeScript
+- Styled Components
+- Python
+- Flask
+- PostgreSQL
+- SQLAlchemy
+- Marshmallow
+- Bcrypt
+- JWT
+- Insomnia
+- bit.io
+- fly.io
+- Netlify
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
 
-## Building your project
+## Brief
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+- Work in a team, using git to code collaboratively.
+- Build a full-stack application by making our own backend and front-end
+- Use an Express API to serve our data from a Mongo database
+- Consume our API with a separate front-end built with React
+- Be a complete product which most likely means multiple relationships and CRUD functionality for at least a couple of models
+- Implement thoughtful user stories/wireframes that are significant enough to help us know which features are core MVP and which we can cut
+- Have a visually impressive design to kick our portfolio up a notch and have something to wow future clients & employers. ALLOW time for this.
+- Be deployed online so it's publicly accessible.
+- Have automated tests for at least one RESTful resource on the back-end. Improve our employability by demonstrating a good understanding of testing principals.
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+## Planning and Development procces
 
-## Deploying your project
+1. Our first step was to decide about features for the application. We used Excalidraw for initial wireframe of the project:
+![Excalidraw](./Excalidraw.png)
 
-As mentioned above, there are many ways to host your project for free. Our recommend hosts are:
+2. Next step was to create GitHub repositories for the project and to create a Jira board to plan and manage the prject and task for it:
+![Jira](./Jira-board.png)
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+3. Rafael took his time to create wireframe in Figma. He was also responsible for the custom 3d cube done with three.js:
+![Figma](./Figma-board.png)
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://medium.com/frontend-mentor/frontend-mentor-trusted-hosting-providers-bf000dfebe).
+    Rob was responsible for the front-end part of the project. He used Material UI to create the design of the application. He also created the login and signup forms. He also created the router for the application.
 
-## Create a custom `README.md`
+    I was responsible for the backend part of the project. I created the models for the application and the controllers. I also created the routes for the application. I also created the seed file for the application. I also created the login and signup functionality for the application. I also created the deployment for the application.
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+    We all worked together to create models for the users:
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+      ```javascript
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+      ```
 
-## Submitting your solution
+    and for the products:
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://medium.com/frontend-mentor/a-complete-guide-to-submitting-solutions-on-frontend-mentor-ac6384162248) for tips on how to do this.
+    ```javascript
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+    ```
 
-## Sharing your solution
+    We decided that we will keep the basket inside the user model. It was easier to manage the basket this way. We also decided to keep the bought products inside the user model.
 
-There are multiple places you can share your solution:
+4. Next I created the app in index.ts and made sure it is connecting to the database:
 
-1. Share your solution page in the **#finished-projects** channel of the [Slack community](https://www.frontendmentor.io/slack). 
-2. Tweet [@frontendmentor](https://twitter.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in the tweet. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on other social channels like LinkedIn.
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+    ```javascript
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback. 
+    ```
 
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
+5. Next steo was to create fist simple user and product controllers to make sure the app is working:
 
-## Got feedback for us?
+    ```javascript
 
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
+    ```
 
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
+6. Next step was to create the routes for the application:
 
-**Have fun building!** 🚀
+    ```javascript
+
+    ```
+
+7. Next step was to create the seed file for the application. All of the products are added in the seed file as the users will not be able to add products to the database.
+
+    ```javascript
+
+    ```
+
+8. After creating the seed file I created the login and signup functionality for the application. For the login and signup functionality I used bcrypt to hash the password, mongoose hidden to hide elements of the user object from accesing by unauthorised user and jwt to create the token. The token is stored in the local storage of the browser.
+
+    ```javascript
+
+    ```
+
+9. I also created the secure route for the application. The secure route is used to make sure that the user is logged in before they can access the protected routes.
+
+    ```javascript
+
+    ```
+
+10. At this point I have created rest of the controllers and routes for the application.
+
+## Challenges
+
+- This was my first project backend project using MongoDB, Mongoose and ExpressJS. There was a lot of new information to get comfortable with to understand how the create controllers for the application.
+- Making the removeFromBasket() controller for the user was a big headache. I spend a lot of time on it and I am still not happy with the result. I would like to improve it in the future.
+
+## Wins
+
+Writing simple but functioning CRUD application was a big win for me. I am happy that I managed to create, and more important understand the way the application works. The user controllers for the basket aren't perfect but they are working. I am happy that I managed to create the removeFromBasket() controller. It was a big win for me.
+
+## Future improvements
+
+- I’m currently working on fixing the removeFromBasket() controller as it’s not functioning as intended. I’ve identified a few issues that I’m addressing and I’ll keep you updated on my progress.
+- I’m planning to create a separate basket model as having it inside the user model is not an optimal solution. I’d like to have a basket inside a basket model instead. This will help us keep our code organized and make it easier to maintain in the long run.
