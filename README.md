@@ -84,9 +84,9 @@ pipenv run flask run
 
 ## Planning and Development procces
 
-1. My first step when planning this project was to decide which productivity tools use for this project. I decided to use Notion and Quick Database Diagrams:
+1. When I started planning this project I decided to use Notion and Quick Database Diagrams. There is no wireframe for the project as I decided to use an existing design from frontendmentor.io as a basis for the application. The project planning can be found here:
+
     - Notion: <https://www.notion.so/Project-4-2c9e5f6161a45629acd481bb35f3318>
-    
 
 2. The first step was to determine the scope of the application. Given that I will be working on this project alone, I have decided to keep it simple. The application will enable users to create, read, update and delete tasks. Additionally, users can mark tasks as completed and filter them by all, active and completed tasks or clear out all completed tasks. For now, I have decided not to include login or signup until the MVP is done as I wanted to focus on the front-end (React) part of the application. Python with Flask was something completely new for me and two weeks was not enough time to learn back-end in a new technology and make a nice front-end.
 
@@ -96,7 +96,7 @@ pipenv run flask run
 
     Using an existing design helped me focus on the structure of the application and ensure that all included features were working properly. However, one confusing aspect was that the design file did not provide proper descriptions for which colors should be used where. I had access to a Figma file with the design (which I cannot include due to licensing issues) and had to figure out which color should be used where.
 
-4. I started building application by creating model for the back-end. I decided to create three models for the application: User, Product and Basket. I used Quick Database Diagrams to create the database diagram for the application:
+4. I started building application by creating model for the back-end. I decided to create three models for the application: User, Product and List of Tasks. I used Quick Database Diagrams to create the database diagram for the application:
     ![Quick Database Diagrams](./readme-assets/db-diagram.png)
 
     Here is example how the model for the user looks like:
@@ -115,51 +115,204 @@ pipenv run flask run
           return f"<User {self.username}>"
     ```
 
-5. Next steo was to create fist simple user and product controllers to make sure the app is working:
+    Also I have created model for base model to make code a bit more DRY:
 
-    ```javascript
+    ```python
+      class BaseModel:
+          id = db.Column(db.Integer, primary_key=True)
+          created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+          updated_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
+          def save(self):
+              db.session.add(self)
+              db.session.commit()
+
+          def delete(self):
+              db.session.delete(self)
+              db.session.commit()
     ```
 
-6. Next step was to create the routes for the application:
+5. After creating the models, I proceeded to create the schema for the application. To create the schema, I utilized Marshmallow, which is a Python library used to serialize and deserialize data. It was used to determine tables for the database. Here is an example of what the schema for the user looks like:
 
-    ```javascript
+    ```python
+      class UserSchema(ma.SQLAlchemyAutoSchema):
+        tasks = fields.Nested("TaskSchema", many=True, exclude=("user",))
+        list_of_tasks = fields.Nested("LabelSchema", many=True, exclude=("user",))
 
+        class Meta:
+            model = UserModel
+            load_instance = True
+            include_relationships = True
+            include_fk = True
     ```
 
-7. Next step was to create the seed file for the application. All of the products are added in the seed file as the users will not be able to add products to the database.
+    ```python
+      class BaseModel:
+          id = db.Column(db.Integer, primary_key=True)
+          created_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
+          updated_at = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
-    ```javascript
+          def save(self):
+              db.session.add(self)
+              db.session.commit()
 
+          def delete(self):
+              db.session.delete(self)
+              db.session.commit()
     ```
 
-8. After creating the seed file I created the login and signup functionality for the application. For the login and signup functionality I used bcrypt to hash the password, mongoose hidden to hide elements of the user object from accesing by unauthorised user and jwt to create the token. The token is stored in the local storage of the browser.
+6. Next step was to set up the app in app.py file. I have created a blueprint for the application and imported all of the controllers. Here is the whole app.py file:
 
-    ```javascript
+    ```python
+      from flask import Flask
+      from flask_sqlalchemy import SQLAlchemy
+      from flask_marshmallow import Marshmallow
 
+      from flask_cors import CORS
+
+      from config.environment import db_URI
+
+      app = Flask(__name__)
+      app.config["SQLALCHEMY_DATABASE_URI"] = db_URI
+      app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+      db = SQLAlchemy(app)
+
+      ma = Marshmallow(app)
+
+      CORS(app)
+
+      from controllers import users_controllers
+      from controllers import tasks_controllers
+      from controllers import list_of_tasks_controllers
+
+      app.register_blueprint(users_controllers.router, url_prefix="/api")
+      app.register_blueprint(tasks_controllers.router, url_prefix="/api")
+      app.register_blueprint(list_of_tasks_controllers.router, url_prefix="/api")
     ```
 
-9. I also created the secure route for the application. The secure route is used to make sure that the user is logged in before they can access the protected routes.
+7. After setting up the app, I proceeded to create the controllers for the application. I have created three controllers for the application: users, tasks and list of tasks. Below I included 2 examples for the controllers. When the app was setup properly, I was able to test the controllers using Postman. Here is an example of what the controller for the user and task looks like:
 
-    ```javascript
+    ```Python
+    # controller for get all users
+      @router.route("/users", methods=["GET"])
+      def get_all_users():
+          users = UserModel.query.all()
+          return user_schema.jsonify(users, many=True), HTTPStatus.OK
 
+    # controller for create a new task
+      @router.route("/users/tasks", methods=["POST"])
+      def create_task():
+          task_dictionary = request.json
+          try:
+              task = task_schema.load(task_dictionary)
+              task.save()
+          except ValidationError as e:
+              return {
+                  "errors": e.messages,
+                  "message": "Something went wrong when creating the task",
+              }, HTTPStatus.UNPROCESSABLE_ENTITY
+          return task_schema.jsonify(task), HTTPStatus.CREATED
     ```
 
-10. At this point I have created rest of the controllers and routes for the application.
+8. That is all for the back-end. From now on I started to focus on the front-end. I started by creating React app with Vite and TypeScript. After I created overall structure of the application, including components I was sure I will need in the future.
+
+When the structure was set up, I focused on learning how to create dark/light theme for the application. I did it in the main App.tsx file. To make it work I created theme.tsx file to contain all theme related code. Here is an example of what the code looks like:
+
+  ```javascript
+    import { DefaultTheme } from 'styled-components'
+    import '../main.css'
+
+    const lightTheme: DefaultTheme = {
+      id: 'light',
+      background: {
+        primary: 'hsl(220, 98%, 61%)',
+        ...
+      },
+      colors: {
+        primary: 'hsl(0, 0%, 98%)',
+        ...
+      },
+      spacing: {
+      },
+      typography: {
+        fontSize: {
+          small: '14px',
+          ...
+        },
+        fontFamily: "'Josefin Sans', sans-serif;'",
+        fontWeight: {
+          regular: 400,
+          ...
+      }
+    }}
+    export default { lightTheme, darkTheme };
+  ```
+
+Than the theme was imported to the App.tsx file:
+
+  ```javascript
+    import { ThemeProvider } from 'styled-components'
+    import { lightTheme, darkTheme } from './styles/theme'
+
+    function App() {
+      const [theme, setTheme] = useState(darkTheme)
+      const [icon, setIcon] = useState(iconMoon)
+
+      const handleClick = () => {
+        if (theme.id === 'dark') {
+          setTheme({...theme, ...lightTheme})
+          setIcon(iconSun)
+        } else {
+          setTheme({...theme, ...darkTheme})
+          setIcon(iconMoon)
+        }
+      }
+
+      return (
+        <StyleSheetManager disableVendorPrefixes>
+          <div className='application'>
+            <ThemeProvider theme={theme}>
+              <AppBackground />
+              <AppContainer>
+                <HeaderContainer>
+                  <HeaderTitle />
+                  <ThemeIcon icon={icon}  onClick={handleClick} />
+                </HeaderContainer>
+                <CreateTaskContainer className='createTask-container'>
+                  <AddTask theme={theme} tasks={tasks} />
+                </CreateTaskContainer>
+                <ListContainer className='list-container'>
+                  <ListOfTasks theme={theme} tasks={tasks} />
+                </ListContainer>
+              </AppContainer>
+            </ThemeProvider>
+          </div>
+        </StyleSheetManager>
+      )
+    }
+    export default App
+  ```
+
+The above code is using the ThemeProvider component from the styled-components library to provide a theme to the app. The theme is stored in state using the useState hook. The initial theme is set to darkTheme.
+
+The handleClick function is used to toggle between the light and dark themes. When the function is called, it checks the current theme and sets it to the opposite theme. It also sets the icon to either a sun or moon icon depending on the current theme.
+
+The ThemeProvider component wraps the entire app and provides the theme to all of its children. The AppBackground, AppContainer, HeaderContainer, CreateTaskContainer, and ListContainer components all use the theme provided by the ThemeProvider.
+
+After finishing the theme, I focused on creating the components for the application. These were styled using styled components. From now on it was relatively easy to create the components and style them.
 
 ## Challenges
 
-- This was my first project backend project using MongoDB, Mongoose and ExpressJS. There was a lot of new information to get comfortable with to understand how the create controllers for the application.
-- Making the removeFromBasket() controller for the user was a big headache. I spend a lot of time on it and I am still not happy with the result. I would like to improve it in the future.
+The biggest challenge I had was to create the app to refresh automatically when user will add task to the list of tasks instead of refreshing the page manually. Due to the project review date being too close, I decided to leave if for the future improvement. I realised that I need to restructure the app. What I mean by that is that the logic for rendering the tasks in the list of task should be kept together in one component. Currently, the logic for adding the task is split between the ListOfTasks component, AddTask. I didn't have enaugh time to restructure
 
 ## Wins
 
-Writing simple but functioning CRUD application was a big win for me. I am happy that I managed to create, and more important understand the way the application works. The user controllers for the basket aren't perfect but they are working. I am happy that I managed to create the removeFromBasket() controller. It was a big win for me.
+
 
 ## Future improvements
 
-- I’m currently working on fixing the removeFromBasket() controller as it’s not functioning as intended. I’ve identified a few issues that I’m addressing and I’ll keep you updated on my progress.
-- I’m planning to create a separate basket model as having it inside the user model is not an optimal solution. I’d like to have a basket inside a basket model instead. This will help us keep our code organized and make it easier to maintain in the long run.
+
 
 ## Key Learnings
 
