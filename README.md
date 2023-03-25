@@ -16,7 +16,7 @@ I decided to create simple todo list application. The application allows the use
   and one for the frontend:  
   <https://github.com/Mehcanic/project-4-frontend>
 
-- The frontend is available to view [here](https://tosdos-apps.netlify.app/>)
+- The frontend is available to view [here](https://tosdos-apps.netlify.app)
 - If you would like to take a look at the code please clone it and run:
 
 - On the front-end:
@@ -84,9 +84,8 @@ pipenv run flask run
 
 ## Planning and Development procces
 
-1. When I started planning this project I decided to use Notion and Quick Database Diagrams. There is no wireframe for the project as I decided to use an existing design from frontendmentor.io as a basis for the application. The project planning can be found here:
+1. When I started planning this project I decided to use Notion and Quick Database Diagrams. There is no wireframe for the project as I decided to use an existing design from frontendmentor.io as a basis for the application. 
 
-    - Notion: <https://www.notion.so/Project-4-2c9e5f6161a45629acd481bb35f3318>
 
 2. The first step was to determine the scope of the application. Given that I will be working on this project alone, I have decided to keep it simple. The application will enable users to create, read, update and delete tasks. Additionally, users can mark tasks as completed and filter them by all, active and completed tasks or clear out all completed tasks. For now, I have decided not to include login or signup until the MVP is done as I wanted to focus on the front-end (React) part of the application. Python with Flask was something completely new for me and two weeks was not enough time to learn back-end in a new technology and make a nice front-end.
 
@@ -304,16 +303,33 @@ After finishing the theme, I focused on creating the components for the applicat
 
 ## Challenges
 
-The biggest challenge I had was to create the app to refresh automatically when user will add task to the list of tasks instead of refreshing the page manually. Due to the project review date being too close, I decided to leave if for the future improvement. I realised that I need to restructure the app. What I mean by that is that the logic for rendering the tasks in the list of task should be kept together in one component. Currently, the logic for adding the task is split between the ListOfTasks component, AddTask. I didn't have enaugh time to restructure
+The biggest challenge I faced was creating the app to refresh automatically when the user adds a task to the list of tasks instead of refreshing the page manually. Due to the project review date being too close, I decided to leave it for future improvement. I realized that I need to restructure the app. What I mean by that is that the logic for rendering the tasks in the list of tasks should be kept together in one component. Currently, the logic for adding the task is split between the ListOfTasks and AddTask components. Unfortunately, I didn’t have enough time to restructure it, and therefore, the app is not refreshing properly.
+
+Another significant challenge I encountered was that I started experiencing odd TypeScript issues that I didn’t have before. This was due to the fact that I started working on this README file weeks after finishing the project. Although I’m not sure what is causing it, I’m confident that rebuilding this project from scratch will have two significant benefits. First, it will fix the TypeScript issues, and second, the app will work as intended.
+
+Last challange was understanding how to setup SQL database. It took me a while to figure out how to create relationships.
 
 ## Wins
 
+My biggest win during this project is that I feel much more comfortable with planing the application. From now on I will spend much more time planing and sudocoding each major part of the application. If during development process I will encaunter any significant issues, I will stop developing and will focus on fixing the app in the planning stage. When it will be ready I will continue with writing the code. This will help me to avoid any major issues during the development process.
 
+Another win is that I feel much more comfortable with React and TypeScript and styling the app using styled components. I feel like I have a good understanding of how to use these technologies to create a fully functional application. I'm aware that there is still a lot to lear but I feel like I'm on the right track.
 
 ## Future improvements
 
+Future improvements for this project are:
 
+- Fixing the issue with refreshing the app when the user adds a task to the list of tasks.
+- Finishing the bottom part of the list of tasks so the filters for all, active, completed and delete completed tasks are working.
+- Adding the ability to edit the task.
+- Add login and registration functionality.
 
 ## Key Learnings
 
+The key learnings from this project are:
 
+- How to plan the application.
+- How to use React and TypeScript to create a fully functional application.
+- How to use styled components to style the application.
+- How to use SQL database to store the data.
+- How to use Flask to create a back-end for the application.
