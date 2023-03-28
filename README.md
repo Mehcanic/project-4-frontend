@@ -3,17 +3,15 @@
 
 This was a solo project created as a part of the General Assembly Software Engineering Immersive course.
 
-Task was to create full stack application using  React, Python, Flask and PostrgreSQL.
+The goal of the project was to create a full-stack application using Python, Flask, PostgreSQL and React. The application had to be a complete product with few relationships and CRUD functionality for at least a couple of models. I decided to make it simple on the back-end and focus on the front-end part of the project.
 
-The goal of the project was to create a full stack application using Python, Flask, PostgreSQL and React. The application had to be a complete product which most likely means few relationships and CRUD functionality for at least a couple of models. I decide to make it simple on the back-end and focus of the fron-end part of the project.
-
-I decided to create simple todo list application. The application allows the user to create, read, update and delete tasks. The user can also mark the task as completed. The user can also filter the tasks by all, active and completed tasks or clear out all the completed tasks.
+I decided to create a simple todo list application. The application allows the user to create, read, update and delete tasks. The user can also mark the task as completed. The user can also filter the tasks by all, active and completed tasks or clear out all the completed tasks.
 
 ## Getting started and deployment
 
-- This project is split into two repositories. One for the backend:  
+- This project is split into two repositories. One for the backend:
   <https://github.com/Mehcanic/project-3-backend>  
-  and one for the frontend:  
+  and one for the front-end: 
   <https://github.com/Mehcanic/project-4-frontend>
 
 - The frontend is available to view [here](https://tosdos-apps.netlify.app)
@@ -41,7 +39,7 @@ pipenv run flask run
 
 ## Timeframe
 
-- The time frame for the project was 2 weeks.
+- It was a solo project and the timeframe for it was 2 weeks.
 
 ## Technologies used for this project
 
@@ -72,7 +70,6 @@ pipenv run flask run
 
 ## Brief
 
-- Work in a team, using git to code collaboratively.
 - Build a full-stack application by making our own backend and front-end
 - Use an Express API to serve our data from a Mongo database
 - Consume our API with a separate front-end built with React
@@ -80,25 +77,25 @@ pipenv run flask run
 - Implement thoughtful user stories/wireframes that are significant enough to help us know which features are core MVP and which we can cut
 - Have a visually impressive design to kick our portfolio up a notch and have something to wow future clients & employers. ALLOW time for this.
 - Be deployed online so it's publicly accessible.
-- Have automated tests for at least one RESTful resource on the back-end. Improve our employability by demonstrating a good understanding of testing principals.
+- Have automated tests for at least one RESTful resource on the back-end. Improve our employability by demonstrating a good understanding of testing principles.
+
 
 ## Planning and Development procces
 
-1. When I started planning this project I decided to use Notion and Quick Database Diagrams. There is no wireframe for the project as I decided to use an existing design from frontendmentor.io as a basis for the application. 
+1. When I started planning this project, I decided to use Notion and Quick Database Diagrams. There is no wireframe for the project as I decided to use an existing design from frontendmentor.io as a basis for the application.
 
-
-2. The first step was to determine the scope of the application. Given that I will be working on this project alone, I have decided to keep it simple. The application will enable users to create, read, update and delete tasks. Additionally, users can mark tasks as completed and filter them by all, active and completed tasks or clear out all completed tasks. For now, I have decided not to include login or signup until the MVP is done as I wanted to focus on the front-end (React) part of the application. Python with Flask was something completely new for me and two weeks was not enough time to learn back-end in a new technology and make a nice front-end.
+2. The first step was to determine the scope of the application. Given that I will be working on this project alone, I have decided to keep it simple. The application will enable users to create, read, update and delete tasks. Additionally, users can mark tasks as completed and filter them by all, active and completed tasks or clear out all completed tasks. For now, I have decided not to include login or sign up until the MVP is done as I wanted to focus on the front-end (React) part of the application. Python with Flask was something completely new for me and two weeks was not enough time to learn the back-end in new technology and make a nice front-end.
 
 3. I used a design from frontendmentor.io as a basis for the application. The app has a working theme switcher, with the dark theme set as default as it is easier on the eyes:
     ![Design](./readme-assets/app-dark.png)
     ![Design](./readme-assets/app-light.png)
 
-    Using an existing design helped me focus on the structure of the application and ensure that all included features were working properly. However, one confusing aspect was that the design file did not provide proper descriptions for which colors should be used where. I had access to a Figma file with the design (which I cannot include due to licensing issues) and had to figure out which color should be used where.
+    Using an existing design helped me focus on the structure of the application and ensure that all included features were working properly. However, one confusing aspect was that the design file did not provide proper descriptions of which colours should be used and where. I had access to a Figma file with the design (which I cannot include due to licensing issues) and had to figure out which colour should be used where.
 
-4. I started building application by creating model for the back-end. I decided to create three models for the application: User, Product and List of Tasks. I used Quick Database Diagrams to create the database diagram for the application:
+4. I started building an application by creating models for the back-end. I decided to create three models for the application: User, Product and List of Tasks. I used Quick Database Diagrams to create the database diagram for the application:
     ![Quick Database Diagrams](./readme-assets/db-diagram.png)
 
-    Here is example how the model for the user looks like:
+    Here is an example of how the model for the user looks like:
 
     ```python
       class UserModel(db.Model, BaseModel):
@@ -114,7 +111,7 @@ pipenv run flask run
           return f"<User {self.username}>"
     ```
 
-    Also I have created model for base model to make code a bit more DRY:
+    Also, I have created the model for the base model to make the code a bit more DRY:
 
     ```python
       class BaseModel:
@@ -131,7 +128,7 @@ pipenv run flask run
               db.session.commit()
     ```
 
-5. After creating the models, I proceeded to create the schema for the application. To create the schema, I utilized Marshmallow, which is a Python library used to serialize and deserialize data. It was used to determine tables for the database. Here is an example of what the schema for the user looks like:
+5. After creating the models, I proceeded to create the schema for the application. To create the schema, I utilised Marshmallow, which is a Python library used to serialise and deserialize data. It was used to determine tables for the database. Here is an example of what the schema for the user looks like:
 
     ```python
       class UserSchema(ma.SQLAlchemyAutoSchema):
@@ -160,7 +157,7 @@ pipenv run flask run
               db.session.commit()
     ```
 
-6. Next step was to set up the app in app.py file. I have created a blueprint for the application and imported all of the controllers. Here is the whole app.py file:
+6. The next step was to set up the app in the app.py file. I have created a blueprint for the application and imported all of the controllers. Here is the whole app.py file:
 
     ```python
       from flask import Flask
@@ -190,7 +187,7 @@ pipenv run flask run
       app.register_blueprint(list_of_tasks_controllers.router, url_prefix="/api")
     ```
 
-7. After setting up the app, I proceeded to create the controllers for the application. I have created three controllers for the application: users, tasks and list of tasks. Below I included 2 examples for the controllers. When the app was setup properly, I was able to test the controllers using Postman. Here is an example of what the controller for the user and task looks like:
+7. After setting up the app, I proceeded to create the controllers for the application. I have created three controllers for the application: users, tasks and a list of tasks. Below, I included 2 examples for the controllers. When the app was set up properly, I was able to test the controllers using Postman. Here is an example of what the controller for the user and task looks like:
 
     ```Python
     # controller for get all users
@@ -214,9 +211,9 @@ pipenv run flask run
           return task_schema.jsonify(task), HTTPStatus.CREATED
     ```
 
-8. That is all for the back-end. From now on I started to focus on the front-end. I started by creating React app with Vite and TypeScript. After I created overall structure of the application, including components I was sure I will need in the future.
+8. That is all for the back-end. From now on, I started to focus on the front-end. I started by creating a React app with Vite and TypeScript. After I created the overall structure of the application, including components I was sure I will need in the future.
 
-When the structure was set up, I focused on learning how to create dark/light theme for the application. I did it in the main App.tsx file. To make it work I created theme.tsx file to contain all theme related code. Here is an example of what the code looks like:
+When the structure was set up, I focused on learning how to create a dark/light theme for the application. I did it in the main App.tsx file. To make it work, I created the theme.tsx file to contain all theme-related code. Here is an example of what the code looks like:
 
   ```javascript
     import { DefaultTheme } from 'styled-components'
@@ -248,7 +245,7 @@ When the structure was set up, I focused on learning how to create dark/light th
     export default { lightTheme, darkTheme };
   ```
 
-Than the theme was imported to the App.tsx file:
+Then the theme was imported to the App.tsx file:
 
   ```javascript
     import { ThemeProvider } from 'styled-components'
@@ -293,43 +290,45 @@ Than the theme was imported to the App.tsx file:
     export default App
   ```
 
-The above code is using the ThemeProvider component from the styled-components library to provide a theme to the app. The theme is stored in state using the useState hook. The initial theme is set to darkTheme.
+The above code is using the ThemeProvider component from the styled-components library to provide a theme for the app. The theme is stored in the state using the useState hook. The initial theme is set to the dark theme.
 
 The handleClick function is used to toggle between the light and dark themes. When the function is called, it checks the current theme and sets it to the opposite theme. It also sets the icon to either a sun or moon icon depending on the current theme.
 
 The ThemeProvider component wraps the entire app and provides the theme to all of its children. The AppBackground, AppContainer, HeaderContainer, CreateTaskContainer, and ListContainer components all use the theme provided by the ThemeProvider.
 
-After finishing the theme, I focused on creating the components for the application. These were styled using styled components. From now on it was relatively easy to create the components and style them.
+After finishing the theme, I focused on creating the components for the application. These were styled using styled-components. From now on, it was relatively easy to create the components and style them.
 
 ## Challenges
 
-The biggest challenge I faced was creating the app to refresh automatically when the user adds a task to the list of tasks instead of refreshing the page manually. Due to the project review date being too close, I decided to leave it for future improvement. I realized that I need to restructure the app. What I mean by that is that the logic for rendering the tasks in the list of tasks should be kept together in one component. Currently, the logic for adding the task is split between the ListOfTasks and AddTask components. Unfortunately, I didn’t have enough time to restructure it, and therefore, the app is not refreshing properly.
+The biggest challenge I faced was creating the app to refresh automatically when the user adds a task to the list of tasks instead of refreshing the page manually. Due to the project review date being too close, I decided to leave it for future improvement. I realised that I needed to restructure the app. What I mean by that is that the logic for rendering the tasks in the list of tasks should be kept together in one component. Currently, the logic for adding the task is split between the ListOfTasks and AddTask components. Unfortunately, I didn’t have enough time to restructure it, and therefore, the app is not refreshing properly.
 
 Another significant challenge I encountered was that I started experiencing odd TypeScript issues that I didn’t have before. This was due to the fact that I started working on this README file weeks after finishing the project. Although I’m not sure what is causing it, I’m confident that rebuilding this project from scratch will have two significant benefits. First, it will fix the TypeScript issues, and second, the app will work as intended.
 
-Last challange was understanding how to setup SQL database. It took me a while to figure out how to create relationships.
+The last challenge was understanding how to set up an SQL database. It took me a while to figure out how to create relationships
 
 ## Wins
 
-My biggest win during this project is that I feel much more comfortable with planing the application. From now on I will spend much more time planing and sudocoding each major part of the application. If during development process I will encaunter any significant issues, I will stop developing and will focus on fixing the app in the planning stage. When it will be ready I will continue with writing the code. This will help me to avoid any major issues during the development process.
+My biggest win during this project is that I feel much more comfortable with planning the application. From now on, I will spend more time planning and pseudocoding each major part of the application. If during the development process, I encounter any significant issues, I will stop developing and will focus on fixing the app in the planning stage. When it will be ready, I will continue with writing the code. This will help me to avoid any major issues during the development process.
 
-Another win is that I feel much more comfortable with React and TypeScript and styling the app using styled components. I feel like I have a good understanding of how to use these technologies to create a fully functional application. I'm aware that there is still a lot to lear but I feel like I'm on the right track.
+Another win is that I feel much more comfortable with React and TypeScript and styling the app using styled-components. I feel like I have a good understanding of how to use these technologies to create a fully functional application. I'm aware that there is still a lot to learn but I feel like I'm on the right track.
 
 ## Future improvements
 
-Future improvements for this project are:
+As I reflect on this project, there are several future improvements that I would like to implement. These improvements include:
 
-- Fixing the issue with refreshing the app when the user adds a task to the list of tasks.
-- Finishing the bottom part of the list of tasks so the filters for all, active, completed and delete completed tasks are working.
-- Adding the ability to edit the task.
-- Add login and registration functionality.
+- Fixing the Refreshing Issue: Currently, the app doesn’t refresh when the user adds a task to the list of tasks. I would like to fix this issue to improve the user experience.
+- Completing the Bottom Part of the List: Currently, the filters for all, active, completed, and delete completed tasks are not working in the bottom part of the list.
+- The ability to edit tasks would be a valuable addition to the app, allowing users to easily make changes to their existing tasks.
+- Adding login and registration functionality would allow users to create an account, save their tasks, and access them from any device.
+
 
 ## Key Learnings
 
 The key learnings from this project are:
 
-- How to plan the application.
-- How to use React and TypeScript to create a fully functional application.
-- How to use styled components to style the application.
-- How to use SQL database to store the data.
-- How to use Flask to create a back-end for the application.
+- I learned that proper planning of the application is critical to the success of any project. From now I will be spending more time planning the project.
+- With React and TypeScript, I was able to create a fully functional application that was both dynamic and scalable. This allowed me to create a user-friendly interface
+- Styling the application was made easy with the use of styled-components. By learning how to leverage this tool, I was able to create a visually appealing application.
+- The ability to store and manage data is a critical component of any application. By learning how to use an SQL database, I was able to efficiently store and manage data, ensuring the seamless operation of my application.
+- Creating a Back-End with Flask: Creating a reliable back-end is essential to the overall functionality of the application. - - By learning how to use Flask, I was able to create a back-end that was both robust and efficient, allowing for a smooth and uninterrupted user experience.
+
